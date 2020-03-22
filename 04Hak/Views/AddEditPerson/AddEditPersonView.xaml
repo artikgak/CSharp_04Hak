@@ -29,7 +29,7 @@
                  Height="Auto" TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <DatePicker Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" 
                     VerticalAlignment="Center" Height="30" Margin="5"
-                    IsTodayHighlighted="True" FontSize="16" ></DatePicker>
+                    IsTodayHighlighted="True" FontSize="16" SelectedDate="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
         <Button Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center" Height="30" Margin="5" Command="{Binding Cancel}" Content="Cancel"></Button>
         <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" 
