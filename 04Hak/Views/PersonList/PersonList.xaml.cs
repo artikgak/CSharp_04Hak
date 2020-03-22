@@ -18,7 +18,7 @@ namespace KMACSharp04Hak.Views.PersonList
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
                 return;
 #endif
-            StationManager.Initialize(new SerializedDataStorage());
+            StationManager.Instance.Initialize(new SerializedDataStorage());
             DataContext = new PersonListViewModel();
         }
     }

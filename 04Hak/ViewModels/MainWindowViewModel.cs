@@ -22,10 +22,9 @@ namespace KMACSharp04Hak.ViewModels
         }
         internal MainWindowViewModel()
         {
-            StationManager.Initialize(new SerializedDataStorage());
+            StationManager.Instance.Initialize(new SerializedDataStorage());
             NavigationManager.Instance.Initialize(new AddEditPersonNavigationModel(this));
             NavigationManager.Instance.Navigate(ViewType.Main);
         }
-
     }
 }

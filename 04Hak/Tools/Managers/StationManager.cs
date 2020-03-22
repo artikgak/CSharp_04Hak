@@ -3,23 +3,44 @@ using KMACSharp04Hak.Tools.DataStorage;
 
 namespace KMACSharp04Hak.Tools.Managers
 {
-    internal static class StationManager
+    internal class StationManager
     {
+        private static readonly object Locker = new object();
+        private static StationManager _instance;
 
-        private static IDataStorage _dataStorage;
-        private static Person _selectedPerson;
+        private IDataStorage _dataStorage;
+        private Person _selectedPerson;
 
-        internal static Person SelectedPerson { get; set; }
+        internal static StationManager Instance
+        {
+            get
+            {
+                if (_instance != null)
+                {
+                    return _instance;
+                }
 
-        internal static IDataStorage DataStorage
+                lock (Locker)
+                {
+                    return _instance ?? (_instance = new StationManager());
+                }
+            }
+        }
+
+        internal Person SelectedPerson { get; set; }
+
+        internal IDataStorage DataStorage
         {
             get { return _dataStorage; }
         }
 
-        internal static void Initialize(IDataStorage dataStorage)
+        private StationManager()
+        {
+        }
+
+        internal void Initialize(IDataStorage dataStorage)
         {
             _dataStorage = dataStorage;
         }
-
     }
 }

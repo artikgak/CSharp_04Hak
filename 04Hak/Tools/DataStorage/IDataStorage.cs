@@ -6,9 +6,9 @@ namespace KMACSharp04Hak.Tools.DataStorage
 {
     internal interface IDataStorage
     {
-        bool AddPerson(Person person);
-        bool EditPerson(ref Person toEditPerson,  Person changedPerson);
-        bool DeletePerson( Person person);
+        void AddPerson(Person person);
+        void EditPerson(Person toEditPerson,  Person changedPerson);
+        void DeletePerson(Person person);
         ObservableCollection<Person> PersonList { get; }
     }
 }   

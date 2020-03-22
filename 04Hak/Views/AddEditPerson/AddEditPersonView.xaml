@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:KMACSharp04Hak.Views.AddEditPerson"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -21,10 +20,10 @@
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Content="Name" />
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Content="Surname" />
         <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Content="Email" />
-        <Label Grid.Row="3"  Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Content="Birth date" />
-        <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="20" TextWrapping="Wrap" />
-        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="20" TextWrapping="Wrap" />
-        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="20" TextWrapping="Wrap" />
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Content="Birth date" />
+        <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" />
+        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" />
+        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" />
         <DatePicker Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" 
                     VerticalAlignment="Center" Height="30" Margin="5"
                     IsTodayHighlighted="True" FontSize="16" ></DatePicker>
