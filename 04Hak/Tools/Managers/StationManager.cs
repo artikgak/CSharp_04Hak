@@ -9,7 +9,6 @@ namespace KMACSharp04Hak.Tools.Managers
         private static StationManager _instance;
 
         private IDataStorage _dataStorage;
-        private Person _selectedPerson;
 
         internal static StationManager Instance
         {

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using KMACSharp04Hak.Models;
 using KMACSharp04Hak.Tools;
-using KMACSharp04Hak.Tools.DataStorage;
 using KMACSharp04Hak.Tools.Managers;
 using KMACSharp04Hak.Tools.MVVM;
 using KMACSharp04Hak.Tools.Navigation;
