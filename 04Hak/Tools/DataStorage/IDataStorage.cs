@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using KMACSharp04Hak.Models;
 
 namespace KMACSharp04Hak.Tools.DataStorage
 {
     internal interface IDataStorage
     {
-        void AddPerson(Person person);
-        void EditPerson(ref Person toEditPerson,  Person changedPerson);
-        void DeletePerson(ref Person person);
-        List<Person> PersonList { get; }
+        bool AddPerson(Person person);
+        bool EditPerson(ref Person toEditPerson,  Person changedPerson);
+        bool DeletePerson( Person person);
+        ObservableCollection<Person> PersonList { get; }
     }
 }   

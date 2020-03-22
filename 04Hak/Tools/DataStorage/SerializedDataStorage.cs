@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
 using System.Text;
 using KMACSharp04Hak.Models;
@@ -9,23 +11,47 @@ namespace KMACSharp04Hak.Tools.DataStorage
 {
     internal class SerializedDataStorage: IDataStorage
     {
-        private List<Person> _persons;
+        private static SerializedDataStorage instance;
+        private ObservableCollection<Person> _persons;
 
         private Random rand = new Random();
+
+        public static SerializedDataStorage Instance()
+        {
+            if (instance == null)
+                instance = new SerializedDataStorage();
+            return instance;
+        }
 
         internal SerializedDataStorage()
         {
             try
             {
-                _persons = SerializationManager.Deserialize<List<Person>>(FileFolderHelper.StorageFilePath);
+                _persons = SerializationManager.Deserialize<ObservableCollection<Person>>(FileFolderHelper.StorageFilePath);
             }
             catch (FileNotFoundException)
             {
-                _persons = new List<Person>();
+                _persons = new ObservableCollection<Person>();
                 FillWithRandomPersons();
                 SaveChanges();
             }
         }
+
+        //private void DataStorageChanged(object sender, NotifyCollectionChangedEventArgs eventArgs)
+        //{
+        //    switch (eventArgs.Action)
+        //    {
+        //        case NotifyCollectionChangedAction.Add:
+        //            PersonList = new ObservableCollection<Person>(StationManager.DataStorage.PersonList);
+        //            break;
+        //        case NotifyCollectionChangedAction.Remove:
+        //            PersonList = new ObservableCollection<Person>(StationManager.DataStorage.PersonList);
+        //            break;
+        //        case NotifyCollectionChangedAction.Replace:
+        //            PersonList = new ObservableCollection<Person>(StationManager.DataStorage.PersonList);
+        //            break;
+        //    }
+        //}
 
         private void FillWithRandomPersons()
         {
@@ -59,9 +85,10 @@ namespace KMACSharp04Hak.Tools.DataStorage
             return st.ToString();
         }
 
-        public List<Person> PersonList
+        public ObservableCollection<Person> PersonList
         {
             get { return _persons; }
+            set => _persons = value;
         }
 
         private void SaveChanges()
@@ -69,22 +96,25 @@ namespace KMACSharp04Hak.Tools.DataStorage
             SerializationManager.Serizalize(_persons, FileFolderHelper.StorageFilePath);
         }
 
-        public void AddPerson(Person person)
+        public bool AddPerson(Person person)
         {
             _persons.Add(person);
             SaveChanges();
+            return true;
         }
 
-        public void EditPerson(ref Person toEditPerson, Person changedPerson)
+        public bool EditPerson(ref Person toEditPerson, Person changedPerson)
         {
             _persons[_persons.IndexOf(toEditPerson)] = changedPerson;
             SaveChanges();
+            return true;
         }
 
-        public void DeletePerson(ref Person person)
+        public bool DeletePerson(Person person)
         {
-            _persons.Remove(person);
+            bool remove = _persons.Remove(person);
             SaveChanges();
+            return remove;
         }
 
     }

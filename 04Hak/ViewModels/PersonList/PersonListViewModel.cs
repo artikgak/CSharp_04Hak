@@ -1,6 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using KMACSharp04Hak.Models;
 using KMACSharp04Hak.Tools;
 using KMACSharp04Hak.Tools.DataStorage;
@@ -37,7 +40,25 @@ namespace KMACSharp04Hak.ViewModels.PersonList
         internal PersonListViewModel()
         {
             _persons = new ObservableCollection<Person>(StationManager.DataStorage.PersonList);
+            SerializedDataStorage.Instance().PersonList.CollectionChanged += DataStorageChange;
         }
+
+        private void DataStorageChange(object sender, NotifyCollectionChangedEventArgs eventArgs)
+        {
+            switch (eventArgs.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    SerializedDataStorage.Instance().PersonList = new ObservableCollection<Person>(StationManager.DataStorage.PersonList);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    SerializedDataStorage.Instance().PersonList = new ObservableCollection<Person>(StationManager.DataStorage.PersonList);
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    SerializedDataStorage.Instance().PersonList = new ObservableCollection<Person>(StationManager.DataStorage.PersonList);
+                    break;
+            }
+        }
+
         public ObservableCollection<Person> Persons
         {
             get
@@ -47,7 +68,7 @@ namespace KMACSharp04Hak.ViewModels.PersonList
 
            private set
             {
-                _persons = value;
+                _persons = new ObservableCollection<Person>(StationManager.DataStorage.PersonList);
                 OnPropertyChanged();
             } 
         }
@@ -99,9 +120,25 @@ namespace KMACSharp04Hak.ViewModels.PersonList
             get
             {
                 return _deletePersonCommand ?? (_deletePersonCommand =
-                           new RelayCommand<object>(
-                               o =>  
-                           ));
+                           new RelayCommand<object>(RemovePerson, o=> CanExecuteCommand()));
+            }
+        }
+
+        private bool CanExecuteCommand()
+        {
+            return SelectedPerson != null;
+        }
+
+        private void RemovePerson(object obj)
+        {
+            var isSuccessful = StationManager.DataStorage.DeletePerson(SelectedPerson);
+            if (isSuccessful)
+            {
+                MessageBox.Show("Successfully deleted");
+            }
+            else
+            {
+                MessageBox.Show("Selected person don't exist deleted");
             }
         }
 
