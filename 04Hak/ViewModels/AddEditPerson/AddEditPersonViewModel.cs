@@ -18,14 +18,14 @@ namespace KMACSharp04Hak.ViewModels.AddEditPerson
         private string _email;
         private DateTime _date = DateTime.Today;
 
-        #endregion
-
         #region Commands
-
         private RelayCommand<object> _submitCommand;
         private RelayCommand<object> _cancelCommand;
+        #endregion
 
         #endregion
+
+        #region Constructors
 
         internal AddEditPersonViewModel(Person person)
         {
@@ -37,8 +37,61 @@ namespace KMACSharp04Hak.ViewModels.AddEditPerson
         }
 
         internal AddEditPersonViewModel()
+        { }
+
+        #endregion
+
+        #region Properties
+
+        public Person Person
         {
+            get { return _person; }
+            set { _person = value; }
         }
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public string Surname
+        {
+            get { return _surname; }
+            set
+            {
+                _surname = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Email
+        {
+            get { return _email; }
+            set
+            {
+                _email = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region CommandProperties
 
         public RelayCommand<object> Cancel
         {
@@ -57,6 +110,8 @@ namespace KMACSharp04Hak.ViewModels.AddEditPerson
                     new RelayCommand<object>(o => { SubmitChanges(_person); }));
             }
         }
+
+        #endregion
 
         private void SubmitChanges(object obj)
         {
@@ -83,34 +138,5 @@ namespace KMACSharp04Hak.ViewModels.AddEditPerson
             }
         }
 
-        public Person Person
-        {
-            get { return _person; }
-            set { _person = value; }
-        }
-
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        public string Surname
-        {
-            get { return _surname; }
-            set { _surname = value; }
-        }
-
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
-
-        public DateTime Date
-        {
-            get { return _date; }
-            set { _date = value; }
-        }
     }
 }

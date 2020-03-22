@@ -10,9 +10,14 @@ namespace KMACSharp04Hak.Tools.DataStorage
 {
     internal class SerializedDataStorage: IDataStorage
     {
+        private Random rand = new Random();
+
         private ObservableCollection<Person> _persons;
 
-        private Random rand = new Random();
+        public ObservableCollection<Person> PersonList
+        {
+            get { return _persons; }
+        }
 
         internal SerializedDataStorage()
         {
@@ -60,15 +65,12 @@ namespace KMACSharp04Hak.Tools.DataStorage
             return st.ToString();
         }
 
-        public ObservableCollection<Person> PersonList
-        {
-            get { return _persons; }
-        }
-
         private void SaveChanges()
         {
             SerializationManager.Serizalize(_persons, FileFolderHelper.StorageFilePath);
         }
+
+        #region AddEditDelete Functions
 
         public void AddPerson(Person person)
         {
@@ -88,5 +90,6 @@ namespace KMACSharp04Hak.Tools.DataStorage
             SaveChanges();
         }
 
+        #endregion
     }
 }

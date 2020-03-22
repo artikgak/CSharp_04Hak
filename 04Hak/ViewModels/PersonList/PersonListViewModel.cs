@@ -41,6 +41,8 @@ namespace KMACSharp04Hak.ViewModels.PersonList
             _persons = new ObservableCollection<Person>(StationManager.Instance.DataStorage.PersonList);
         }
 
+        #region Properties
+
         public ObservableCollection<Person> Persons
         {
             get { return _persons; }
@@ -52,7 +54,6 @@ namespace KMACSharp04Hak.ViewModels.PersonList
             }
         }
 
-
         public Person SelectedPerson
         {
             private get { return StationManager.Instance.SelectedPerson; }
@@ -63,6 +64,10 @@ namespace KMACSharp04Hak.ViewModels.PersonList
                 OnPropertyChanged();
             }
         }
+
+        #endregion
+
+        #region AddEditDelete Properties
 
         public RelayCommand<object> AddPerson
         {
@@ -94,6 +99,8 @@ namespace KMACSharp04Hak.ViewModels.PersonList
                     ));
             }
         }
+
+        #endregion
 
         void DeletePersonMethod(object obj)
         {

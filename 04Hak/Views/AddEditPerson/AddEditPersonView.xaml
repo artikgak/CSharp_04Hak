@@ -21,9 +21,12 @@
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Content="Surname" />
         <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Content="Email" />
         <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Content="Birth date" />
-        <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" />
-        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" />
-        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" />
+        <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" 
+                 Height="Auto" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" 
+                 Height="Auto" TextWrapping="Wrap" Text="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5 5" VerticalAlignment="Center" 
+                 Height="Auto" TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <DatePicker Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" 
                     VerticalAlignment="Center" Height="30" Margin="5"
                     IsTodayHighlighted="True" FontSize="16" ></DatePicker>
