@@ -33,7 +33,7 @@
         <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Person List" FontSize="20" FontWeight="Bold"></Label>
         <DataGrid SelectionMode="Single" SelectedItem="{Binding SelectedPerson}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" dgx:DataGridFilter.IsAutoFilterEnabled="True" ItemsSource="{Binding Persons, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="100" CanUserSort="True" SortMemberPath="NameCustomSort" Binding="{Binding Name, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Width="100" CanUserSort="True" Binding="{Binding Name, Mode=OneWay}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Surname" Width="100" Binding="{Binding Surname, Mode=OneWay}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email, Mode=OneWay}"></DataGridTextColumn>
                 <DataGridTextColumn Header="BirthDate" Width="90" Binding="{Binding BirthDate, Mode=OneWay, StringFormat=dd/MM/yyyy }"></DataGridTextColumn>

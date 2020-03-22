@@ -72,8 +72,7 @@ namespace KMACSharp04Hak.ViewModels.PersonList
             get
             {
                 return _addPersonCommand ?? (_addPersonCommand =
-                    new RelayCommand<object>(
-                        o => { NavigationManager.Instance.Navigate(ViewType.AddEditPerson); }));
+                    new RelayCommand<object>(AddPersonMethod));
             }
         }
 
@@ -99,6 +98,12 @@ namespace KMACSharp04Hak.ViewModels.PersonList
 
         #endregion
 
+        void AddPersonMethod(object obj)
+        {
+            SelectedPerson = null;
+            NavigationManager.Instance.Navigate(ViewType.AddEditPerson);
+        }
+
         void EditPersonMethod(object obj)
         {
             NavigationManager.Instance.Navigate(ViewType.AddEditPerson);
@@ -107,6 +112,7 @@ namespace KMACSharp04Hak.ViewModels.PersonList
         void DeletePersonMethod(object obj)
         {
             StationManager.Instance.DataStorage.DeletePerson(SelectedPerson);
+            SelectedPerson = null;
         }
 
         bool CanExecuteCommand()

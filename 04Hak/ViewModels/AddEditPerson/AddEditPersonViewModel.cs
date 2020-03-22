@@ -27,17 +27,18 @@ namespace KMACSharp04Hak.ViewModels.AddEditPerson
 
         #region Constructors
 
-        internal AddEditPersonViewModel(Person person)
-        {
-            _person = person;
-            _name = person.Name;
-            _surname = person.Surname;
-            _email = person.Email;
-            _date = person.BirthDate;
-        }
 
         internal AddEditPersonViewModel()
-        { }
+        {
+            _person = StationManager.Instance.SelectedPerson;
+            if (_person != null)
+            {
+                _name = _person.Name;
+            _surname = _person.Surname;
+            _email = _person.Email;
+            _date = _person.BirthDate;
+            }
+        }
 
         #endregion
 
