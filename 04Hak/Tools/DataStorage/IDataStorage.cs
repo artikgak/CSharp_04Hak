@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using KMACSharp04Hak.Models;
 
 namespace KMACSharp04Hak.Tools.DataStorage

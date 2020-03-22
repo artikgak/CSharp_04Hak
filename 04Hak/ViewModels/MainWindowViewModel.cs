@@ -1,10 +1,7 @@
-﻿using System;
-using System.Windows;
-using KMACSharp04Hak.Tools;
+﻿using KMACSharp04Hak.Tools;
 using KMACSharp04Hak.Tools.DataStorage;
 using KMACSharp04Hak.Tools.Managers;
 using KMACSharp04Hak.Tools.Navigation;
-using KMACSharp04Hak.ViewModels.PersonList;
 
 namespace KMACSharp04Hak.ViewModels
 {
