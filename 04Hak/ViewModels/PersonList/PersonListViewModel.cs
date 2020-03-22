@@ -221,6 +221,7 @@ namespace KMACSharp04Hak.ViewModels.PersonList
 
         private async void SortImplementation(object obj, int i)
         {
+            LoaderManager.Instance.ShowLoader();
             await Task.Run(() =>
             {
                 IOrderedEnumerable<Person> sortedPersons;
@@ -270,6 +271,7 @@ namespace KMACSharp04Hak.ViewModels.PersonList
 
                 Persons = new ObservableCollection<Person>(sortedPersons);
             });
+            LoaderManager.Instance.HideLoader();
         }
     }
 }
