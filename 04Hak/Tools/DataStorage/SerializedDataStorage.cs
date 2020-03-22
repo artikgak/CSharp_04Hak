@@ -32,6 +32,8 @@ namespace KMACSharp04Hak.Tools.DataStorage
             }
         }
 
+        #region Generate users functions
+
         private void FillWithRandomPersons()
         {
             for (int i = 0; i < 43; ++i)
@@ -68,6 +70,7 @@ namespace KMACSharp04Hak.Tools.DataStorage
         {
             SerializationManager.Serizalize(_persons, FileFolderHelper.StorageFilePath);
         }
+        #endregion
 
         #region AddEditDelete Functions
 

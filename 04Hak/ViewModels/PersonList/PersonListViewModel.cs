@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using KMACSharp04Hak.Models;
 using KMACSharp04Hak.Tools;
+using KMACSharp04Hak.Tools.DataStorage;
 using KMACSharp04Hak.Tools.Managers;
 using KMACSharp04Hak.Tools.MVVM;
 using KMACSharp04Hak.Tools.Navigation;
@@ -37,6 +39,7 @@ namespace KMACSharp04Hak.ViewModels.PersonList
         internal PersonListViewModel()
         {
             _persons = new ObservableCollection<Person>(StationManager.Instance.DataStorage.PersonList);
+            StationManager.Instance.DataStorage.PersonList.CollectionChanged += DataStorageChange;
         }
 
         #region Properties
@@ -98,6 +101,8 @@ namespace KMACSharp04Hak.ViewModels.PersonList
 
         #endregion
 
+        #region AddEditDelete Methods
+
         void AddPersonMethod(object obj)
         {
             SelectedPerson = null;
@@ -115,9 +120,27 @@ namespace KMACSharp04Hak.ViewModels.PersonList
             SelectedPerson = null;
         }
 
+        #endregion
+
         bool CanExecuteCommand()
         {
             return SelectedPerson != null;
+        }
+
+        private void DataStorageChange(object sender, NotifyCollectionChangedEventArgs eventArgs)
+        {
+            switch (eventArgs.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    Persons = new ObservableCollection<Person>(StationManager.Instance.DataStorage.PersonList);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    Persons = new ObservableCollection<Person>(StationManager.Instance.DataStorage.PersonList);
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    Persons = new ObservableCollection<Person>(StationManager.Instance.DataStorage.PersonList);
+                    break;
+            }
         }
 
         #region SortProperties
