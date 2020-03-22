@@ -29,8 +29,8 @@
                     VerticalAlignment="Center" Height="30" Margin="5"
                     IsTodayHighlighted="True" FontSize="16" ></DatePicker>
         <Button Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Center" Height="30" Margin="5" Command="{Binding Cancel}" >Cancel</Button>
+                VerticalAlignment="Center" Height="30" Margin="5" Command="{Binding Cancel}" Content="Cancel"></Button>
         <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Center" Height="30" Margin="5" Command="{Binding Submit}">Submit</Button>
+                VerticalAlignment="Center" Height="30" Margin="5" Command="{Binding Submit}" Content="Submit"></Button>
     </Grid>
 </UserControl>

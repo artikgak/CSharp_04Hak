@@ -75,9 +75,9 @@ namespace KMACSharp04Hak.Tools.DataStorage
             SaveChanges();
         }
 
-        public void EditPerson(ref Person toEditPerson, ref Person changedPerson)
+        public void EditPerson(ref Person toEditPerson, Person changedPerson)
         {
-            //edit
+            _persons[_persons.IndexOf(toEditPerson)] = changedPerson;
             SaveChanges();
         }
 

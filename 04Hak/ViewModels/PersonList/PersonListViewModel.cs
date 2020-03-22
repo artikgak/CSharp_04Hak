@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KMACSharp04Hak.Models;
 using KMACSharp04Hak.Tools;
+using KMACSharp04Hak.Tools.DataStorage;
 using KMACSharp04Hak.Tools.Managers;
 using KMACSharp04Hak.Tools.MVVM;
 using KMACSharp04Hak.Tools.Navigation;
@@ -15,7 +16,6 @@ namespace KMACSharp04Hak.ViewModels.PersonList
         #region Fields
 
         private ObservableCollection<Person> _persons;
-        private Person _selectedPerson;
         #endregion
 
         #region Commands
@@ -52,6 +52,22 @@ namespace KMACSharp04Hak.ViewModels.PersonList
             } 
         }
 
+        public Person SelectedPerson
+        {
+            get
+            {
+                return StationManager.SelectedPerson; 
+
+            }
+
+            set
+            {
+                StationManager.SelectedPerson = value;
+                OnPropertyChanged();
+            }
+
+        }
+
         public RelayCommand<object> AddPerson
         {
             get
@@ -78,6 +94,16 @@ namespace KMACSharp04Hak.ViewModels.PersonList
             }
         }
 
+        public RelayCommand<object> DeletePerson
+        {
+            get
+            {
+                return _deletePersonCommand ?? (_deletePersonCommand =
+                           new RelayCommand<object>(
+                               o =>  
+                           ));
+            }
+        }
 
         #region SortProperties
         public RelayCommand<object> SortName

@@ -6,7 +6,6 @@
       xmlns:dgx="urn:tom-englert.de/DataGridExtensions"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="900" x:ClassModifier="internal">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -32,7 +31,7 @@
             </MenuItem>
         </Menu>
         <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Person List" FontSize="20" FontWeight="Bold"></Label>
-        <DataGrid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" dgx:DataGridFilter.IsAutoFilterEnabled="True" ItemsSource="{Binding Persons, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True">
+        <DataGrid SelectionMode="Single" SelectedItem="{Binding SelectedPerson}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" dgx:DataGridFilter.IsAutoFilterEnabled="True" ItemsSource="{Binding Persons, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="100" CanUserSort="True" SortMemberPath="NameCustomSort" Binding="{Binding Name, Mode=OneWay}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Surname" Width="100" Binding="{Binding Surname, Mode=OneWay}"></DataGridTextColumn>
@@ -47,8 +46,8 @@
         <Button Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center" Height="30" Margin="5" Command="{Binding AddPerson}" Content="Add Person"></Button>
         <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Center" Height="30" Margin="5"  Command="{Binding AddPerson}" Content="Delete Person"></Button>
+                VerticalAlignment="Center" Height="30" Margin="5"  Command="{Binding DeletePerson}" Content="Delete Person"></Button>
         <Button Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Center" Height="30" Margin="5" Command="{Binding AddPerson}" Content="Edit Person"></Button>
+                VerticalAlignment="Center" Height="30" Margin="5" Command="{Binding EditPerson}" Content="Edit Person"></Button>
     </Grid>
 </UserControl>
